@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DetalleFactura;
 use App\Factura;
 use App\Proveedor;
 
@@ -16,7 +17,7 @@ class FacturaController extends Controller
     public function index()
     {
         $proveedor = Proveedor::all()
-            ->pluck('name','id');
+            ->pluck('name','name');
         $factura = Factura::all();
         $selected = array();
         return view('obra.factura.index',compact('factura','proveedor','selected'));
@@ -42,6 +43,7 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
+
         $factura= new Factura($request->all());
         $factura->save();
 
@@ -102,4 +104,5 @@ class FacturaController extends Controller
 
         return Response::json($factura);
     }
+
 }

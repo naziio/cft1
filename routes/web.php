@@ -50,6 +50,16 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('obra/nombrepu/index/{presupuestos}',['as' => 'nombrepu', 'uses' => 'NombrePUController@index']);
 
+  //  Route::get('obra/factura/detalle/show/{facturas}', 'DetalleFacturaController@index');
+
+
+
+
+
+    Route::resource('obra/factura/detalle', 'DetalleFacturaController');
+
+    //Route::post('obra/factura/detalle/index','DetalleFacturaController@store' );
+
     Route::get('obra/index', function()
     {
         return view('obra.index');

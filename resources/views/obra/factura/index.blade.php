@@ -25,12 +25,12 @@ Facturas
                     <th>Recargo</th>
                     <th>Monto exento</th>
                     <th>Descuentos</th>
-                    <th>Impuesto especifico</th>
+                    <th>Imp. especif.</th>
                     <th>Neto</th>
                     <th>IVA</th>
-                    <th>Total concepto</th>
-                    <th>Observacion</th>
-                    <th>Estado</th>
+                    <th>Concepto</th>
+                    <th>Obser.</th>
+
 
                 </tr>
                 </thead>
@@ -39,7 +39,6 @@ Facturas
                 <tr id="factura{{$facturas->id}}">
                     <td>{{$facturas->id}}</td>
                     <td>{{$facturas->razon_social}}</td>
-
                     <td>{{$facturas->num_factura}}</td>
                     <td>{{$facturas->subtotal}}</td>
                     <td>{{$facturas->recargo}}</td>
@@ -50,11 +49,23 @@ Facturas
                     <td>{{$facturas->iva}}</td>
                     <td>{{$facturas->total_concepto}}</td>
                     <td>{{$facturas->observacion}}</td>
-
                     <td>{{$facturas->created_at}}</td>
                     <td>
+                        <form  id="id1" name="id1"  method="post"  action="factura/detalle/index">
+
+                            <input type="hidden" name="_token" id="_token"  value="<?= csrf_token(); ?>">
+                            <input type="hidden" name="id" id="id"  value="{{$facturas->id}}">
+
+
+                                    <button type="submit" class="btn btn-primary btn-xs btn-detail" value="{{$facturas->id}}">Cargar Datos</button>
+
+
+                            </div>
+
+                        </form>
+
                         <button  class="btn btn-warning btn-xs btn-detail open-modal" value="{{$facturas->id}}">Editar</button>
-                        <button class="btn btn-danger btn-xs btn-delete delete-factura" value="{{$facturas->id}}">Eliminar</button>
+<!--                        <a href="{{ url('obra/factura/detalle/show', $facturas->id) }}"> <button class="btn btn-danger btn-xs" value="{{$facturas->id}}">Detalle</button></a>-->
                     </td>
                 </tr>
                 @endforeach
@@ -74,7 +85,7 @@ Facturas
                                 <div class="form-group">
                                     <label for="razon_social" class="col-sm-3 control-label">Razon social</label>
                                     <div class="col-sm-9">
-                                        {!! Form::select('razon_social', $proveedor, $selected,['class' => 'form-control']) !!}
+                                        {!! Form::select('razon_social', $proveedor,$selected,['class' => 'form-control', 'id'=> 'razon_social']) !!}
                                     </div>
                                 </div>
 

@@ -22,7 +22,6 @@ $(document).ready(function(){
             console.log(data);
             $('#factura_id').val(data.id);
             $('#razon_social').val(data.razon_social);
-
             $('#subtotal').val(data.subtotal);
             $('#recargo').val(data.recargo);
             $('#num_factura').val(data.num_factura);
@@ -78,7 +77,6 @@ $(document).ready(function(){
         var formData = {
 
             razon_social: $('#razon_social').val(),
-            rut: $('#rut').val(),
             subtotal: $('#subtotal').val(),
             recargo: $('#recargo').val(),
             num_factura: $('#num_factura').val(),

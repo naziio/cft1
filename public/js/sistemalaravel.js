@@ -130,6 +130,7 @@ $(document).on("click",".div_modal",function(e){
         if(nombreform=="f_subir_imagen" ){ var miurl="subir_imagen_usuario";  var divresul="notificacion_resul_fci"}
         if(nombreform=="f_cargar_datos_usuarios" ){ var miurl="cargar_datos";  var divresul="notificacion_resul_fcdu"}
       if(nombreform=="f_cargar_datos_presupuesto" ){ var miurl="cargar_datos2";  var divresul="notificacion_resul_fcdu"}
+      if(nombreform=="id1") { var miurl="index";}
 
         //información del formulario
         var formData = new FormData($("#"+nombreform+"")[0]);
