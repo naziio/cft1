@@ -10,7 +10,29 @@ detalle
 <div class="container">
     <div class="container-narrow">
         <h2>Detalle de factura</h2>
-        <button id="btn-add" name="btn-add" class="btn btn-primary">Agregar Detalle Factura</button>
+        <a href="{{ url('obra/factura/detalle/create', $factura)}}"> <button id="btn-add" name="btn-add" class="btn btn-primary">Agregar Detalle Factura</button>
+        </a>
+        <div id="notificacion_resul_fcdu"></div>
+
+        <form  id="f_cargar_datos_factura" name="f_cargar_datos_factura" method="post"  action="cargar_datos2" class="formarchivo" enctype="multipart/form-data" >
+
+            <input type="hidden" name="_token" id="_token"  value="<?= csrf_token(); ?>">
+
+            <div class="box-body">
+
+                <div class="form-group col-xs-12"  >
+                    <label>Agregar Archivo de Excel </label>
+                    <input name="archivo" id="archivo" type="file"   class="archivo form-control"  required/><br /><br />
+                </div>
+                <input type="hidden" name="factura" id="factura" value="{{$factura}}"/>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Cargar Datos</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
         <div>
 
             <!-- Table-to-load-the-data Part -->
@@ -36,8 +58,8 @@ detalle
                     <td>{{$detalles->total}}</td>
                     <td>{{$detalles->created_at}}</td>
                     <td>
-                        <a href="#"><button  class="btn btn-warning btn-xs btn-detail" value="{{$detalles->id}}">Editar</button></a>
-                        <a href="#"><button class="btn btn-danger btn-xs btn-delete " value="{{$detalles->id}}">Eliminar</button></a>
+                        <a href="#"><button  class="btn btn-warning btn-xs " value="{{$detalles->id}}">Ver</button></a>
+                        <a href="#"><button class="btn btn-danger btn-xs " value="{{$detalles->id}}">Eliminar</button></a>
                     </td>
                 </tr>
                 @endforeach
@@ -45,62 +67,7 @@ detalle
             </table>
             <!-- End of Table-to-load-the-data Part -->
             <!-- Modal (Pop up when detail button clicked) -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Agregar Detalle detalle</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form id="frmdetalle" name="frmdetalle" class="form-horizontal" novalidate="">
 
-
-                                <div class="form-group">
-                                    <label for="id_producto" class="col-sm-3 control-label">Descripcion</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control " id="id_producto" name="id_producto">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="cantidad" class="col-sm-3 control-label">Cantidad</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control " id="cantidad" name="cantidad">
-                                    </div>
-                                </div>
-                                <div class="form-group error">
-                                    <label for="precio_unitario" class="col-sm-3 control-label">Precio unitario</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control has-error" id="precio_unitario" name="precio_unitario" placeholder="" value="">
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="total" class="col-sm-3 control-label">Total</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="total" name="total" placeholder="" value="">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="factura_fk" class="col-sm-3 control-label">Factura</label>
-                                   <div class="col-sm-9">
-                                        {!! Form::text('factura_fk',$factura,['class' => 'form-control', 'id' => 'factura_fk', 'readonly']) !!}
-                                    </div>
-                                </div>
-
-
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar cambios</button>
-                            <input type="hidden" id="detalle_id" name="detalle_id" value="0">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <meta name="_token" content="{!! csrf_token() !!}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -56,7 +56,11 @@ Route::group(['middleware' => 'web'], function () {
 
 
 
-    Route::resource('obra/factura/detalle', 'DetalleFacturaController');
+    Route::get('obra/factura/detalle/index', 'DetalleFacturaController@index');
+
+    Route::get('obra/factura/detalle/create/{factura}', 'DetalleFacturaController@create');
+
+    Route::post('obra/factura/detalle/create', ['as'=> 'detalle/store', 'uses' => 'DetalleFacturaController@store']);
 
     //Route::post('obra/factura/detalle/index','DetalleFacturaController@store' );
 

@@ -51,14 +51,12 @@ Facturas
                     <td>{{$facturas->observacion}}</td>
                     <td>{{$facturas->created_at}}</td>
                     <td>
-                        <form  id="id1" name="id1"  method="post"  action="factura/detalle/index">
+                        <form  id="id1" name="id1"  method="get"  action="factura/detalle/index">
 
                             <input type="hidden" name="_token" id="_token"  value="<?= csrf_token(); ?>">
                             <input type="hidden" name="id" id="id"  value="{{$facturas->id}}">
 
-
                                     <button type="submit" class="btn btn-primary btn-xs btn-detail" value="{{$facturas->id}}">Cargar Datos</button>
-
 
                             </div>
 

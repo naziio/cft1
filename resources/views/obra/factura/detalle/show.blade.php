@@ -10,7 +10,8 @@ detalle
 <div class="container">
     <div class="container-narrow">
         <h2>Detalle de factura</h2>
-        <button id="btn-add" name="btn-add" class="btn btn-primary">Agregar Detalle Factura</button>
+<!--        id="btn-add" name="btn-add"-->
+        <button class="btn btn-primary">Agregar Detalle Factura</button></a>
         <div>
 
             <!-- Table-to-load-the-data Part -->
